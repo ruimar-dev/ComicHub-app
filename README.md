@@ -1,7 +1,5 @@
 # ComicHub
 
-<img id="oscuro" src="{{ asset('img/mobile-logo-claro.png') }}" alt="Logo">
-
 ## Acerca del Proyecto Marvel Laravel
 
 Este proyecto es una aplicación web construida con Laravel que utiliza la API de Marvel. Cuenta con un buscador, un explorador, una lista de lectura, gestión de usuarios, una página de contacto, una página de "Quiénes somos", y más.
