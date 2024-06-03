@@ -1,0 +1,160 @@
+#comics-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 16px;
+}
+.name{
+    color: black;
+
+}
+.comic-card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.comic-card img {
+    width: 100%;
+    height: auto;
+}
+.comic-card .card-title {
+    font-size: 1.25rem;
+    margin: 0;
+    padding: 8px;
+    color: white;
+}
+
+.content {
+    margin: auto;
+    max-width: 1200px;
+}
+
+.title {
+    font-size: 28px;
+    margin: 0;
+    color: white;
+    text-align: center;
+    margin-bottom: 16px;
+}
+
+#load-more {
+    display: block;
+    margin: auto;
+    margin-top: 16px;
+    padding: 8px 16px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: white;
+    color: black;
+    cursor: pointer;
+}
+#loading-button {
+    display: block;
+    margin: auto;
+    margin-top: 16px;
+    padding: 8px 16px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: white;
+    color: black;
+    cursor: pointer;
+}
+
+#loading-button:after {
+    content: " ";
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    border: 2px solid rgba(0, 0, 0, 0.2);
+    border-top-color: #000;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+@media (prefers-color-scheme: light) {
+    #comics-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 16px;
+        background-color: #ddd;
+    }
+    .comic-card {
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        background-color: #fff;
+        color: #000;
+    }
+    .comic-card img {
+        width: 100%;
+        height: auto;
+    }
+    .comic-card .card-title {
+        font-size: 1.25rem;
+        margin: 0;
+        padding: 8px;
+        color: #000;
+    }
+
+    .content {
+        margin: auto;
+        max-width: 1200px;
+        background-color: #ddd;
+        color: #000;
+    }
+
+    .title {
+        font-size: 28px;
+        margin: 0;
+        color: #000;
+        text-align: center;
+        margin-bottom: 16px;
+    }
+
+    #load-more {
+        display: block;
+        margin: auto;
+        margin-top: 16px;
+        padding: 8px 16px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        background-color: #fff;
+        color: #000;
+        cursor: pointer;
+    }
+    #loading-button {
+        display: block;
+        margin: auto;
+        margin-top: 16px;
+        padding: 8px 16px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        background-color: #fff;
+        color: #000;
+        cursor: pointer;
+    }
+
+    #loading-button:after {
+        content: " ";
+        display: inline-block;
+        width: 16px;
+        height: 16px;
+        border-radius: 50%;
+        border: 2px solid rgba(0, 0, 0, 0.2);
+        border-top-color: #000;
+        animation: spin 1s linear infinite;
+    }
+    main{
+        background-color: #ddd;
+    }
+}
+

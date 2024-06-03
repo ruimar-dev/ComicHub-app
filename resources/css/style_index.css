@@ -1,0 +1,333 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    margin: 0 auto;
+    padding: 20px;
+}
+
+header {
+    color: #fff;
+    text-align: center;
+    background-color: #29b6f6;
+}
+
+.hero {
+    margin-bottom: 48px;
+    margin-top: 80px;
+    padding: 23px;
+    border-radius: 10px;
+    margin-right: 50px;
+    margin-left: 50px;
+    display: flex;
+    justify-content: center;
+    gap: 97px;
+    align-items: center;
+}
+
+
+.title{
+    max-width: 808px;
+    color:#343a40;
+    font-size: 50px;
+    font-family: "Poetsen One", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    text-align: center;
+    margin: auto;
+}
+
+.hero p{
+    color: #343a40;
+    max-width: 480px;
+    font-size: 18px;
+}
+
+.hero h2{
+    color: #343a40;
+    font-size: 32px;
+    margin-bottom: 10px;
+    max-width: 480px;
+}
+
+.search-section {
+    color: #343a40;
+    margin-bottom: 48px;
+    margin-top: 80px;
+    padding: 23px;
+    border-radius: 10px;
+    margin-right: 50px;
+    margin-left: 50px;
+    display: flex;
+    justify-content: center;
+    gap: 97px;
+    align-items: center;
+}
+
+.search-section h2 {
+    font-size: 32px;
+    margin-bottom: 10px;
+    max-width: 480px;
+}
+
+.search-section p {
+    font-size: 18px;
+    margin-bottom: 20px;
+    max-width: 480px;
+}
+
+.section__search {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #FF0000;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 16px;
+}
+.section__search:hover{
+    background-color: #8b0000;
+    color: #343a40;
+    text-decoration: none;   
+}
+.register-section {
+    color: #343a40;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 40px;
+    background-size:contain;
+    margin-right: 50px;
+    margin-left: 50px;
+    display: flex;
+    justify-content: center;
+    gap: 97px;
+    align-items: center;
+}
+
+.register-section h2 {
+    font-size: 32px;
+    margin-bottom: 10px;
+    max-width: 480px;
+}
+
+.register-section p {
+    font-size: 18px;
+    margin-bottom: 20px;
+    max-width: 480px;
+}
+
+.section__register {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #59ceee;
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 16px;
+    
+}
+.section__register:hover{
+    background-color: #0074f8;
+    color: white;
+    text-decoration: none; 
+    transition: background-color 0.3s ease;  
+}
+.contact-section {
+    margin-top: 80px;
+    padding: 40px;
+    background-color: #59ceee;
+    color: #fff;
+    text-align: center;
+}
+
+.contact-section h2 {
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+.contact-section p {
+    max-width: 600px;
+    margin: 0 auto 30px;
+    font-size: 18px;
+}
+
+.contact-section a:hover {
+    text-decoration: none;
+}
+
+.section__link {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #ee5959;
+    color: #fff;
+    text-decoration: none;
+    font-size: 16px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.section__link:hover {
+    background-color: #d50c0c;
+}
+
+@font-face {
+    font-family: 'icomoon';
+    src:  url('../../public/fonts/icomoon.eot?zfxv09');
+    src:  url('../../public/fonts/icomoon.eot?zfxv09#iefix') format('embedded-opentype'),
+      url('../../public/fonts/icomoon.ttf?zfxv09') format('truetype'),
+      url('../../public/fonts/icomoon.woff?zfxv09') format('woff'),
+      url('../../public/fonts/icomoon.svg?zfxv09#icomoon') format('svg');
+    font-weight: normal;
+    font-style: normal;
+    font-display: block;
+  }
+  
+  [class^="icon-"], [class*=" icon-"] {
+    /* use !important to prevent issues with browser extensions that change fonts */
+    font-family: 'icomoon' !important;
+    speak: never;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+  
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  .icon-instagram:before {
+    content: "\ea92";
+  }
+  .icon-twitter:before {
+    content: "\ea96";
+  }
+  .icon-github:before {
+    content: "\eab0";
+  }
+
+footer {
+    background-color: #343a40;
+    color: #22262A;
+    text-align: center;
+    padding: 20px;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    margin-top: 0;
+    overflow: hidden;
+}
+
+.footer_c {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
+    font-size: 14px;
+}
+
+.footer_l {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
+    font-size: 12px;
+}
+
+.imgs{
+    width: 22%;
+    padding-left: 20px;
+}
+
+header{
+   padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+}
+
+.links{
+    justify-content: space-around;
+}
+
+.login{
+    gap:24px;
+}
+
+.imagenes{
+    width: 32%;
+    height: max-content;
+}
+
+.imagenes img{
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.register{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: #343a40;
+        color: #fff;
+    }
+
+    header {
+        background-color: #22262A;
+    }
+
+    .hero, .search-section, .register-section {
+        background-color: #22262A;
+        color: #fff;
+    }
+
+    .title, .hero p, .hero h2, .search-section h2, .search-section p, .register-section h2, .register-section p {
+        color: #fff;
+    }
+
+    .section__search {
+        background-color: #8b0000;
+        color: #fff;
+    }
+
+    .section__search:hover {
+        background-color: #FF0000;
+        color: #fff;
+    }
+
+    .section__register {
+        background-color: #0074f8;
+        color: #fff;
+    }
+
+    .section__register:hover {
+        background-color: #59ceee;
+        color: #fff;
+    }
+
+    .contact-section {
+        background-color: #22262A;
+        color: #fff;
+    }
+
+    .section__link {
+        background-color: #d50c0c;
+        color: #fff;
+    }
+
+    .section__link:hover {
+        background-color: #ee5959;
+    }
+
+    footer {
+        background-color: #22262A;
+        color: #fff;
+    }
+}

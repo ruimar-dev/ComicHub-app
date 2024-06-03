@@ -1,0 +1,96 @@
+#comic-title {
+    color: #333;
+    font-size: 20px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.comic-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 0 10px;
+}
+
+.comic-item {
+    flex: 0 0 calc(25% - 20px);
+    margin: 10px;
+    background-color: #f0f0f0;
+    padding: 10px;
+    box-sizing: border-box;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+}
+
+.comic-item:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.1);
+}
+
+.comic-item img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+.comic-item form {
+    margin-top: 20px;
+}
+
+.comic-item form button {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.delete_button:hover {
+    background-color: #444;
+}
+.update_button{
+    margin-top: 10px;
+}
+.update_button:hover {
+    background-color: #444;
+   
+}
+.state {
+    color: #333;
+}
+.no-comics {
+    text-align: center;
+    font-size: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    color: #333;
+}
+/* Estilos para el tema oscuro */
+@media (prefers-color-scheme: dark) {
+    #comic-title {
+        color: #fff;
+    }
+    .comic-item {
+        background-color: #444;
+    }
+    .comic-item form button {
+        background-color: #fff;
+        color: #333;
+    }
+    .delete_button:hover {
+        background-color: #fc4646;
+        color: #fff;
+    }
+    .update_button:hover {
+        background-color: #48e0eb;
+        
+    }
+    .state {
+        color: #fff;
+    }
+    .no-comics {
+        color: #fff;
+    }
+}

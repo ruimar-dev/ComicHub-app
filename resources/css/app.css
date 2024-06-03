@@ -1,0 +1,46 @@
+@import "explore.css";
+@import "show.css";
+@import "reading.css";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+[x-cloak] {
+    display: none;
+}
+
+#oscuro { display: none; }
+    @media (prefers-color-scheme: dark) {
+        #claro { display: none; }
+        #oscuro { display: block; }
+    }
+
+    footer {
+        background-color: #343a40;
+        color: #22262A;
+        text-align: center;
+        padding: 20px;
+        margin-top: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 40px;
+        margin-top: 0;
+        overflow: hidden;
+    }
+    
+    .footer_c {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 25px;
+        font-size: 14px;
+    }
+    
+    .footer_l {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 25px;
+        font-size: 12px;
+    }
+

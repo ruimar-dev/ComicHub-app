@@ -1,0 +1,111 @@
+.comic-title {
+    font-size: 2em;
+    color: #333333;
+    text-align: center;
+    margin-bottom: 1em;
+}
+
+.comic-content {
+    background-color: #f3f4f6;
+    padding: 1em;
+}
+
+.comic-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.comic-flex {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.comic-image {
+    margin-bottom: 1em;
+}
+
+.comic-thumbnail {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.comic-details {
+    width: 100%;
+    padding: 20px;
+}
+
+.comic-main-title {
+    font-size: 1.5em;
+    color: #333333;
+    text-align: center;
+    margin-bottom: 1em;
+}
+
+.comic-subtitle {
+    font-size: 1.2em;
+    color: #666666;
+    text-decoration: underline;
+    margin-bottom: 0.5em;
+}
+
+.comic-authors {
+    list-style-type: none;
+    padding: 0;
+    margin-bottom: 1em;
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+
+.comic-characters,.comic-stories,.comic-prices{
+    list-style-type: none;
+    padding: 0;
+    margin-bottom: 1em;
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+
+.comic-author,
+.comic-character,.comic-story,.comic-price {
+    font-size: 1em;
+    color: #333333;
+    margin-bottom: 0.5em;
+}
+
+.comic-description {
+    font-size: 1em;
+    color: #666666;
+    margin-bottom: 1em;
+    text-align: justify;
+}
+
+.comic-page-count {
+    font-size: 1em;
+    color: #333333;
+    text-align: right;
+}
+
+@media (prefers-color-scheme: dark) {
+
+    .comic-content {
+        background-color: rgb(17 24 39 / 90%);;
+    }
+
+    .comic-title,
+    .comic-main-title,
+    .comic-author,
+    .comic-character,
+    .comic-page-count,.comic-story,.comic-price {
+        color: #ffffff;
+    }
+
+    .comic-subtitle,
+    .comic-description {
+        color: #bbbbbb;
+    }
+}
