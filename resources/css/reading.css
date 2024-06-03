@@ -9,7 +9,7 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
-    padding: 0 10px;
+    padding: 2rem;
 }
 
 .comic-item {
@@ -46,16 +46,16 @@
     cursor: pointer;
     transition: all 0.3s ease;
 }
-
-.delete_button:hover {
-    background-color: #444;
-}
 .update_button{
     margin-top: 10px;
 }
+.delete_button:hover {
+    background-color: #fc4646;
+    color: #fff;
+}
 .update_button:hover {
-    background-color: #444;
-   
+    background-color: #48e0eb;
+    
 }
 .state {
     color: #333;
@@ -92,5 +92,18 @@
     }
     .no-comics {
         color: #fff;
+    }
+}
+
+@media (max-width: 768px) {
+    .comic-item {
+        flex: 0 0 calc(50% - 20px);
+    }
+}
+
+/* Estilos para pantallas muy pequeñas */
+@media (max-width: 480px) {
+    .comic-item {
+        flex: 0 0 calc(100% - 20px);
     }
 }

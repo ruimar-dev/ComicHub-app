@@ -84,12 +84,23 @@ $("#button").on("click", function (){
         }
     });
 });
+// Recuperar los IDs de los cómics añadidos del almacenamiento local
+var addedComicIds = JSON.parse(localStorage.getItem('addedComicIds')) || {};
 
 $('#añadir').on('submit', function(e){
     e.preventDefault();
     var comic_id = $(this).data('comic_id');
 
+    // Comprueba si el cómic ya está en la lista de lectura
+    if (addedComicIds[comic_id]) {
+        alert('Este cómic ya está en tu lista de lectura');
+        return;
+    }
+
     $.post('/reading-list/add', { comic_id: comic_id, _token: $('meta[name="csrf-token"]').attr("content") }, function() {
+        // Añade el ID del cómic al registro y lo guarda en el almacenamiento local
+        addedComicIds[comic_id] = true;
+        localStorage.setItem('addedComicIds', JSON.stringify(addedComicIds));
         alert('Cómic añadido a la lista de lectura');
     });
 });

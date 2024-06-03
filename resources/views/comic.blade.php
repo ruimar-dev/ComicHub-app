@@ -15,7 +15,7 @@
                 <form method="POST" action="{{ route('readingList.update', $comic['id']) }}" id="añadir" data-comic_id="{{ $comic['id'] }}">
                     @csrf
                     <input type="hidden" name="comic_id" value="{{ $comic['id'] }}" id="id">
-                    <button type="submit" class="text-white">Añadir a mi lista</button>
+                    <button type="submit" class="btn">Añadir a mi lista +</button>
                 </form>
                 <div class="comic-details">
                     <h1 class="comic-main-title">{{ $comic['title'] }}</h1>
