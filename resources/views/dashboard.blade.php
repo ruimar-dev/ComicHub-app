@@ -15,7 +15,8 @@
                         placeholder="(Ex. Hulk, Iron Man, Spider-Man, etc...)">
                 </div>
                 <div class="flex justify-end">
-                    <input type="submit" id="button" value="Search!" class="px-4 py-2 bg-red-500 text-white rounded-md hover:bg-red-600 cursor-pointer">
+                    <input type="submit" id="button" value="Buscar" class="px-4 py-2 bg-red-500 text-white rounded-md hover:bg-red-600 cursor-pointer">
+                    <button id="loading-button2" class="px-4 py-2 bg-red-500 text-white rounded-md hover:bg-red-600 cursor-pointer" style="display:none;">Cargando...</button>
                 </div>
             </div>
         </div>

@@ -75,7 +75,7 @@ class ComicController extends Controller
 
     public function search(Request $request)
     {
-        $search = $request->search;
+        $search = $request->input('search');
         $timestamp = time();
         $publicKey = "dfb0f50315bf6369eb209d35020cf6f3";
         $privateKey = "b2d45cbb2af82b2028b987c60565c1a73d4c4f52";
@@ -100,7 +100,7 @@ class ComicController extends Controller
                 return $imageUrl !== 'http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available/portrait_uncanny.jpg';
             });
 
-            return response()->json($comics->values());
+            return view('partials.numbers', compact('comics'));
         }else {
             return response()->json(['error' => 'Error en la solicitud a la API de Marvel'], 500);
         }

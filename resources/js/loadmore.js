@@ -20,7 +20,7 @@ $("#load-more").on("click", function (){
                 var url = comicShowUrl + '/' + comic['id'];
                 var comicCard = `
                     <div class="comic-card">
-                    '<a href=" ${url}" target="_blank">'
+                    <a href=" ${url}" target="_blank">
                             <img src="${comic.thumbnail.path}/portrait_uncanny.${comic.thumbnail.extension}" alt="${comic.title}">
                             <h5 class="card-title">${comic.title}</h5>
                         </a>
@@ -45,42 +45,32 @@ $("#button").on("click", function (){
     var terminoBusqueda = $('#name').val();
     var loadMoreButton = $('#load-more');
     var loadingButton = $('#loading-button');
+    var loadingButton2 = $('#loading-button2');
+    var buscar = $('#button');
 
     // Mostrar el botón de cargando y ocultar el botón de buscar
-    loadMoreButton.hide();
-    loadingButton.show();
+    buscar.hide();
+    loadingButton2.show();
     
     $.ajax({
-        url: "/dashboard/search",
-        type: 'POST',
-        data: {
-            search: terminoBusqueda,
-            _token: $('meta[name="csrf-token"]').attr("content"),
-        },
+        url: "/dashboard/search?search=" + encodeURIComponent(terminoBusqueda),
+        type: 'GET',
+
         success: function(data) {
             var comicsContainer = $('#comics-grid');
-            comicsContainer.empty();
-            data.forEach(function(comic) {
-                var url = comicShowUrl + '/' + comic['id'];
-                var comicCard = `
-                    <div class="comic-card">
-                    '<a href=" ${url}" target="_blank">'
-                            <img src="${comic.thumbnail.path}/portrait_uncanny.${comic.thumbnail.extension}" alt="${comic.title}">
-                            <h5 class="card-title">${comic.title}</h5>
-                        </a>
-                    </div>
-                `;
-                comicsContainer.append(comicCard);
-            });
+            comicsContainer.html(data);
+            
             // Ocultar el botón de cargando y mostrar el botón de buscar
-            loadingButton.hide();
-             loadMoreButton.show();
+            loadingButton2.hide();
+            buscar.show();
+
+            history.pushState(null, '', '?search=' + encodeURIComponent(terminoBusqueda));
         },
         error: function(xhr, status, error) {
             console.error('Error al buscar cómics:', error);
             // Ocultar el botón de cargando y mostrar el botón de buscar
-            loadingButton.hide();
-             loadMoreButton.show();
+            loadingButton2.hide();
+            buscar.show();
         }
     });
 });
@@ -149,3 +139,4 @@ $('.delete-comic').on('submit', function(e){
         }
     });
 });
+

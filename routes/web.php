@@ -7,7 +7,7 @@ use App\Http\Controllers\ReadingListController;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('welcome');
 
 Route::get('/about', function () {
     return view('about_us');
@@ -19,7 +19,7 @@ Route::middleware([
     'verified',
 ])->group(function () {
     Route::get('/dashboard', [ComicController::class, 'index'])->name('dashboard');
-    Route::post('/dashboard/search', [ComicController::class, 'search'])->name('search');
+    Route::get('/dashboard/search', [ComicController::class, 'search'])->name('search');
     Route::post('/reading-list/add', [ReadingListController::class, 'add'])->name('readingList.add');
     Route::put('/reading-list/update/{id}', [ReadingListController::class, 'update'])->name('readingList.update');
     Route::get('/reading-list', [ReadingListController::class, 'index'])->name('readingList.index');
