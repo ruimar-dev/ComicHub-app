@@ -17,6 +17,15 @@
                     <input type="hidden" name="comic_id" value="{{ $comic['id'] }}" id="id">
                     <button type="submit" class="btn">Añadir a mi lista +</button>
                 </form>
+                @if (!empty($comic['urls']))
+                    @foreach ($comic['urls'] as $url)
+                        @if ($url['type'] == 'marvel')
+                            <a href="{{ $url['url'] }}" class="btn" target="_blank">Comprar ahora</a>
+                        @endif
+                    @endforeach
+                @else
+                    <p>No URLs found</p>
+                @endif
                 <div class="comic-details">
                     <h1 class="comic-main-title">{{ $comic['title'] }}</h1>
                     @if (!empty(($comic['creators']['items'])))

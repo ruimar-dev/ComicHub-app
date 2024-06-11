@@ -21,6 +21,7 @@
             </div>
         </div>
         <div class="container p-8 md:mx-auto"id="comics-grid">
+            
             @if (isset($error))
                 <div class="alert alert-danger">
                     {{ $error }}

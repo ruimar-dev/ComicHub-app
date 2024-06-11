@@ -9,6 +9,7 @@
             <p class="no-comics">No hay cómics en tu lista de lectura</p>
         @endif
         @foreach ($comics as $comic)
+        <div id="message" style="display: none;"></div>
             <div class="comic-item">
                 <img src="{{ $comic['thumbnail']['path'] . '/portrait_uncanny.' . $comic['thumbnail']['extension'] }}" alt="{{ $comic['title'] }}">
                 <p id="comic-title">{{ $comic['title'] }}</p>

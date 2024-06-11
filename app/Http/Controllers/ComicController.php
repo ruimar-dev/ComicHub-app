@@ -43,8 +43,9 @@ class ComicController extends Controller
         $privateKey = "b2d45cbb2af82b2028b987c60565c1a73d4c4f52";
         $hash = md5($timestamp . $privateKey . $publicKey);
         $limit = 12;
+        
 
-        $offset = $request->input('offset', 0);
+        $offset = $request->offset;
 
         $parameters = [
             'apikey' => $publicKey,
@@ -123,11 +124,19 @@ class ComicController extends Controller
             $data = $response->json()['data'];
             $comic = $data['results'][0];
 
+            // Generar una URL de Amazon basada en el título del cómic
+            $marvelUrl = 'https://www.marvel.com/comics/issue/' . $comic['id'] . '/' . $comic['title'] . '?utm_campaign=apiRef&utm_source=' . $publicKey . '&utm_medium=api';
+
+            // Agregar la URL de Amazon al array de URLs del cómic
+            $comic['urls'][] = [
+                'type' => 'marvel',
+                'url' => $marvelUrl
+            ];
+
             return view('comic', compact('comic'));
         } else {
             return back()->withErrors('Error en la solicitud a la API de Marvel');
         }
-
     }
 
 }
