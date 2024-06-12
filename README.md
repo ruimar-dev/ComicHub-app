@@ -1,63 +1,61 @@
-# ComicHub
+[]: # Autor: Sergio Ruiz Martin
+[]: # Fecha: 12/06/2024
 
-## Acerca del Proyecto Marvel Laravel
+# ComicHub
 
 Este proyecto es una aplicación web construida con Laravel que utiliza la API de Marvel. Cuenta con un buscador, un explorador, una lista de lectura, gestión de usuarios, una página de contacto, una página de "Quiénes somos", y más.
 
-## Características
+## Lista de lectura
 
-- Buscador de cómics de Marvel.
-- Explorador de cómics de Marvel.
-- Lista de lectura personalizada.
-- Gestión de usuarios.
-- Página de contacto.
-- Página de "Quiénes somos".
+- **Registro de Usuario:** Tener que loguearse para acceder a la lista de lectura y buscador.
 
-## Instalación
+- **Agregar Cómics:** Añade nuevos cómics a tu lista de lectura con información detallada.
 
-Sigue estos pasos para instalar y ejecutar el proyecto Marvel Laravel en tu máquina local para propósitos de desarrollo y pruebas.
+- **Actualizar Estado:** Marca tus cómics como leídos, en progreso o sin leer para mantener un registro de tu progreso de lectura.
 
-### Prerrequisitos
+- **Eliminar de la Lista:** Elimina cómics de tu lista de lectura cuando lo desees.
 
-Necesitarás tener instalado PHP, Composer y un servidor de base de datos MySQL en tu máquina local. También necesitarás una clave de API de Marvel.
+## Buscar Comics
 
-### Pasos
+- **Buscar por Personaje:** Busca cómics por personaje de Marvel.
 
-1. Clona el repositorio en tu máquina local:
+- **Información del Cómic:** Muestra información detallada del cómic como título, paginas, personaje y fecha de publicación una vez que pinches en la foto del comic.
 
-    ```git clone https://github.com/ruimar-dev/ComicHub-app.git```
+- **Importante:** Intentar buscar por el nombre correcto del personaje o titulo, ya que si no lo es,puede que no te saldra ningun comic.
 
-2. Navega al directorio del proyecto:
 
-    ```cd ComicHub-app```
+## Contacto
 
-3. Instala las dependencias del proyecto con Composer:
+- **Página de Contacto:** Puede contactar con nosotros rellenando el formulario de contacto que se encuentra en la página de contacto acto seguido nos llegará un correo con su mensaje y le responderemos lo antes posible.
 
-    ```composer install```
+## Quiénes somos
 
-4. Copia el archivo .env.example a un nuevo archivo llamado .env:
+- **Página de Quiénes somos:** Puede ver información sobre nosotros en la página de Quiénes somos.
 
-    ```cp .env.example .env```
+## Terminos y Condiciones
 
-5. Genera una nueva clave de aplicación:
+- **Página de Terminos y Condiciones:** Puede ver los terminos y condiciones de la página en la página de terminos y condiciones.
 
-    ```php artisan key:generate```
 
-6. Abre el archivo .env y configura tus credenciales de base de datos y tu clave de API de Marvel.
+## Cambiar datos
 
-7. Ejecuta las migraciones de la base de datos:
+- **Cambiar Contraseña:** Puede cambiar su contraseña en la página de cambiar datos, para ello debe introducir su contraseña actual y la nueva contraseña que desea poner y repetirla.
 
-    ```php artisan migrate```
+- **Cambiar Correo:** Puede cambiar el resto de sus datos pero debera introducir su contraseña actual pero poder cambiarlos.
 
-8. Inicia el servidor de desarrollo local:
+-**Cambiar Foto:** Puede cambiar su foto de perfil en la página de cambiar datos con la nueva foto que desea poner.
 
-    ```php artisan serve```
+- **Autenticación de dos factores:** Puede activar la autenticación de dos factores en la página de cambiar datos, para ello debe introducir su contraseña actual y escanear el codigo QR que le aparece en la página.
 
-Ahora deberías poder acceder a la aplicación en ```http://localhost:8000```
+- **Sesion Iniciada:** Si cierras el navegador y vuelve a iniciarlo no tendra que volver a iniciar sesion.
 
 ## Aprendiendo Laravel
 
 Laravel tiene la documentación más extensa y completa y la biblioteca de tutoriales en video de todos los marcos de aplicaciones web modernas, lo que facilita comenzar con el marco.
+
+## API de Marvel
+
+ComicHub utiliza la API de Marvel para buscar cómics por personajes. Puedes obtener tu clave de API de Marvel en [developer.marvel.com](https://developer.marvel.com).
 
 ## Contribuyendo
 
@@ -69,8 +67,8 @@ Para asegurar que la comunidad de Laravel sea acogedora para todos, por favor re
 
 ## Vulnerabilidades de Seguridad
 
-Si descubres una vulnerabilidad de seguridad dentro de Laravel, por favor envía un correo electrónico a Taylor Otwell a través de [taylor@laravel.com](mailto:taylor@laravel.com). Todas las vulnerabilidades de seguridad serán atendidas de inmediato.
+Si descubres una vulnerabilidad de seguridad dentro de ComicHub, por favor envía un correo electrónico a Sergio Ruiz a través de [ruizmartinsergio0@gmail.com](mailto:ruizmartinsergio0@gmail.com). Todas las vulnerabilidades de seguridad serán atendidas de inmediato.
 
 ## Licencia
 
-El proyecto Marvel Laravel es un software de código abierto con licencia bajo la [licencia MIT](https://opensource.org/licenses/MIT).
+El proyecto ComicHub es un software de código abierto con licencia bajo la [licencia MIT](https://opensource.org/licenses/MIT).
