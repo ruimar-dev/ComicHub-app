@@ -1,13 +1,13 @@
 let offset = 0;
 const limit = 12;
-let loadedComicIds = new Set(); // Almacena los IDs de los cómics ya cargados
+let loadedComicIds = new Set(); // Keep track of loaded comic IDs
 
 $("#load-more").on("click", function (){
     var terminoBusqueda = $('#name').val();
     var loadMoreButton = $(this);
     var loadingButton = $('#loading-button');
     offset += limit;
-    // Mostrar el botón de cargando y ocultar el botón de cargar más
+    // Show the loading button and hide the load more button
     loadMoreButton.hide();
     loadingButton.show();
     $.ajax({
@@ -20,7 +20,7 @@ $("#load-more").on("click", function (){
         success: function(data) {
             var comicsContainer = $('#comics-grid');
             data.forEach(function(comic) {
-                if (!loadedComicIds.has(comic.id)) { // Solo agrega el cómic si su ID no está en loadedComicIds
+                if (!loadedComicIds.has(comic.id)) { // Check if the comic ID is not already loaded
                     var url = comicShowUrl + '/' + comic['id'];
                     var comicCard = `
                         <div class="comic-card">
@@ -31,17 +31,18 @@ $("#load-more").on("click", function (){
                         </div>
                     `;
                     comicsContainer.append(comicCard);
-                    loadedComicIds.add(comic.id); // Agrega el ID del cómic a loadedComicIds
+                    loadedComicIds.add(comic.id); // Add the comic ID to the set
                 }
             });
             $('#load-more').data('offset', offset + data.length);
-             // Ocultar el botón de cargando y mostrar el botón de cargar más
+             // Hide the loading button and show the load more button
              loadingButton.hide();
              loadMoreButton.show();
         }
     });
 });
 
+// Method to search comics
 $("#button").on("click", function (){
     var terminoBusqueda = $('#name').val();
     var loadMoreButton = $('#load-more');
@@ -49,7 +50,7 @@ $("#button").on("click", function (){
     var loadingButton2 = $('#loading-button2');
     var buscar = $('#button');
 
-    // Mostrar el botón de cargando y ocultar el botón de buscar
+    // Show the loading button and hide the load more button
     buscar.hide();
     loadingButton2.show();
     
@@ -61,13 +62,13 @@ $("#button").on("click", function (){
             var comicsContainer = $('#comics-grid');
             comicsContainer.html(data);
             
-            // Ocultar el botón de cargando y mostrar el botón de buscar
+            // Hide the loading button and show the load more button
             loadingButton2.hide();
             buscar.show();
         
-            // Verificar si los datos están vacíos
+            // Check if there are no comics to display
             if (comicsContainer.children().length === 0) {
-                // Mostrar un mensaje y ocultar el botón de "cargar más"
+                // Display a message when there are no comics to display
                 comicsContainer.css({
                     'display': 'flex',
                     'justify-content': 'center',
@@ -89,20 +90,22 @@ $("#button").on("click", function (){
         },
         error: function(xhr, status, error) {
             console.error('Error al buscar cómics:', error);
-            // Ocultar el botón de cargando y mostrar el botón de buscar
+            // Hide the loading button and show the load more button
             loadingButton2.hide();
             buscar.show();
         }
     });
 });
-// Recuperar los IDs de los cómics añadidos del almacenamiento local
+
+// Recover the ID of the comic to add to the reading list
 var addedComicIds = JSON.parse(localStorage.getItem('addedComicIds')) || {};
 
+// Add a comic to the reading list
 $('#añadir').on('submit', function(e){
     e.preventDefault();
     var comic_id = $(this).data('comic_id');
 
-    // Comprueba si el cómic ya está en la lista de lectura
+    // First, check if the comic is already in the reading list
     if (addedComicIds[comic_id]) {
         Swal.fire({
             title: '¡Error!',
@@ -114,10 +117,10 @@ $('#añadir').on('submit', function(e){
     }
 
     $.post('/reading-list/add', { comic_id: comic_id, _token: $('meta[name="csrf-token"]').attr("content") }, function() {
-        // Añade el ID del cómic al registro y lo guarda en el almacenamiento local
+        // Add the comic ID to the list of added comics
         addedComicIds[comic_id] = true;
         localStorage.setItem('addedComicIds', JSON.stringify(addedComicIds));
-        // Muestra el mensaje con SweetAlert2
+        // Show the success message with SweetAlert2
         Swal.fire({
             title: '¡Éxito!',
             text: 'Cómic añadido a tu lista de lectura',
@@ -127,7 +130,7 @@ $('#añadir').on('submit', function(e){
     });
 });
 
-// Actualizar el estado de lectura de un cómic
+// Update the reading status of a comic
 $('.update-reading-status').on('submit', function(e){
     e.preventDefault();
     var comic_id = $(this).data('comic_id');
@@ -142,7 +145,7 @@ $('.update-reading-status').on('submit', function(e){
             _token: $('meta[name="csrf-token"]').attr("content") 
         },
         success: function() {
-            // Muestra el mensaje con SweetAlert2
+            // Show the success message with SweetAlert2
             Swal.fire({
                 title: '¡Éxito!',
                 text: 'Estado de lectura actualizado',
@@ -153,6 +156,7 @@ $('.update-reading-status').on('submit', function(e){
     });
 });
 
+// SweetAlert2 configuration with Bootstrap styling
 var swalWithBootstrapButtons = Swal.mixin({
     customClass: {
         confirmButton: 'btn btn-success',
@@ -161,10 +165,11 @@ var swalWithBootstrapButtons = Swal.mixin({
     buttonsStyling: false
 });
 
+// Delete a comic from the reading list
 $('.delete-comic').on('submit', function(e){
     e.preventDefault();
     var comic_id = $(this).data('comic_id');
-    var comic_element = $(this).closest('.comic-item'); // Encuentra el elemento del cómic
+    var comic_element = $(this).closest('.comic-item'); //  Get the comic element to remove
 
     swalWithBootstrapButtons.fire({
         title: '¿Estás seguro?',
@@ -184,7 +189,7 @@ $('.delete-comic').on('submit', function(e){
                     _token: $('meta[name="csrf-token"]').attr("content") 
                 },
                 success: function() {
-                    comic_element.remove(); // Elimina el elemento del cómic del DOM
+                    comic_element.remove(); // Remove the comic element from the DOM
 
                     swalWithBootstrapButtons.fire(
                         '¡Eliminado!',
@@ -192,7 +197,7 @@ $('.delete-comic').on('submit', function(e){
                         'success'
                     );
 
-                    // Comprueba si quedan cómics en la lista de lectura
+                    // Check if there are no comics in the reading list
                     if ($('.comic-item').length === 0) {
                         $('.comic-container').append('<p class="no-comics">No hay cómics en tu lista de lectura</p>');
                     }

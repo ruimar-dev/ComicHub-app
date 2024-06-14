@@ -6,6 +6,8 @@ use Illuminate\Support\Facades\Http;
 
 class ComicController extends Controller
 {
+
+    // Method to show the list of comics
     public function index(Request $request)
     {
         $timestamp = time();
@@ -14,6 +16,7 @@ class ComicController extends Controller
         $hash = md5($timestamp . $privateKey . $publicKey);
         $limit = 12;
 
+        // Make a request to the Marvel API to get the list of comics
         $response = Http::get("https://gateway.marvel.com/v1/public/comics", [
             'apikey' => $publicKey,
             'ts' => $timestamp,
@@ -22,9 +25,11 @@ class ComicController extends Controller
             'offset' => 0
         ]);
 
+        // Check if the request was successful
         if ($response->successful()) {
             $data = $response->json()['data'];
             $comics = collect($data['results'])->filter(function ($comic) {
+                // Filter out comics that don't have an available image
                 $imageUrl = $comic['thumbnail']['path'] . '/portrait_uncanny.' . $comic['thumbnail']['extension'];
                 return $imageUrl !== 'http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available/portrait_uncanny.jpg';
             });
@@ -35,6 +40,7 @@ class ComicController extends Controller
         }
     }
 
+    // Method to load more comics
     public function loadMore(Request $request)
     {
         $search = $request->search;
@@ -55,6 +61,7 @@ class ComicController extends Controller
             'offset' => $offset
         ];
     
+        // Add search parameter if it exists
         if ($search) {
             $parameters['titleStartsWith'] = $search;
         }
@@ -64,6 +71,7 @@ class ComicController extends Controller
         if ($response->successful()) {
             $data = $response->json()['data'];
             $comics = collect($data['results'])->filter(function ($comic) {
+                // Filter out comics that don't have an available image
                 $imageUrl = $comic['thumbnail']['path'] . '/portrait_uncanny.' . $comic['thumbnail']['extension'];
                 return $imageUrl !== 'http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available/portrait_uncanny.jpg';
             });
@@ -74,6 +82,7 @@ class ComicController extends Controller
         }
     }
 
+    // Method to search for comics
     public function search(Request $request)
     {
         $search = $request->input('search');
@@ -97,6 +106,7 @@ class ComicController extends Controller
         if ($response->successful()) {
             $data = $response->json()['data'];
             $comics = collect($data['results'])->filter(function ($comic) {
+                // Filter out comics that don't have an available image
                 $imageUrl = $comic['thumbnail']['path'] . '/portrait_uncanny.' . $comic['thumbnail']['extension'];
                 return $imageUrl !== 'http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available/portrait_uncanny.jpg';
             });
@@ -107,6 +117,7 @@ class ComicController extends Controller
         }
     }
 
+    // Method to show the details of a comic
     public function show($id)
     {
         $timestamp = time();
@@ -124,10 +135,10 @@ class ComicController extends Controller
             $data = $response->json()['data'];
             $comic = $data['results'][0];
 
-            // Generar una URL de Amazon basada en el título del cómic
+            // Create a URL to the comic on the Marvel website
             $marvelUrl = 'https://www.marvel.com/comics/issue/' . $comic['id'] . '/' . $comic['title'] . '?utm_campaign=apiRef&utm_source=' . $publicKey . '&utm_medium=api';
 
-            // Agregar la URL de Amazon al array de URLs del cómic
+            // Add the Marvel URL to the comic data
             $comic['urls'][] = [
                 'type' => 'marvel',
                 'url' => $marvelUrl

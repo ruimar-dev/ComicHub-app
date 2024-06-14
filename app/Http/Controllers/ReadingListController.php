@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Http;
 class ReadingListController extends Controller
 {
 
+    // Method to show the reading list
     public function index()
     {
         $readingLists = ReadingList::where('user_id', auth()->id())->get();
@@ -19,7 +20,7 @@ class ReadingListController extends Controller
         $privateKey = "b2d45cbb2af82b2028b987c60565c1a73d4c4f52";
         $hash = md5($timestamp . $privateKey . $publicKey);
         foreach ($readingLists as $readingList) {
-            // Hacer la llamada a la API de Marvel para obtener los datos del cómic
+            // Make a request to the Marvel API to get the comic details
             $response = Http::get('https://gateway.marvel.com/v1/public/comics/' . $readingList->comic_id, [
                 'apikey' => $publicKey,
                 'ts' => $timestamp,
@@ -30,15 +31,16 @@ class ReadingListController extends Controller
                 $data = $response->json()['data'];
                 $comic = $data['results'][0];
                 $comic['status'] = $readingList->status;
-                $comics[] = $comic; // Agrega el cómic a la matriz $comics
+                $comics[] = $comic; // Add the comic to the array
             } else {
                 return back()->withErrors('Error en la solicitud a la API de Marvel');
             }
         }
 
-        return view('reading_list', compact('comics')); // Devuelve la vista fuera del bucle
+        return view('reading_list', compact('comics')); // return the view with the comics
     }
 
+    // Method to add a comic to the reading list
     public function add(Request $request)
     {
         $comic = $request->input('comic_id');
@@ -52,10 +54,12 @@ class ReadingListController extends Controller
         return redirect()->back();
     }
 
+    // Method to update the status of a comic in the reading list
     public function update(Request $request, $id)
     {
         $status = $request->input('status');
 
+        // Find the comic in the reading list
         $readingList = ReadingList::where('user_id', auth()->id())
             ->where('comic_id', $id)
             ->first();
@@ -68,6 +72,7 @@ class ReadingListController extends Controller
         return redirect()->back();
     }
 
+    // Method to remove a comic from the reading list
     public function destroy($id)
     {
         $readingList = ReadingList::where('user_id', auth()->id())
