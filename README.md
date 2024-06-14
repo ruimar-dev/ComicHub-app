@@ -1,5 +1,5 @@
 ## Autor: Sergio Ruiz Martin
-## Fecha de ultima actualizacion: 12/06/2024
+## Fecha de ultima actualizacion: 14/06/2024
 
 # ComicHub
 
