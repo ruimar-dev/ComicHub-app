@@ -72,3 +72,7 @@ Si descubres una vulnerabilidad de seguridad dentro de ComicHub, por favor enví
 ## Licencia
 
 El proyecto ComicHub es un software de código abierto con licencia bajo la [licencia MIT](https://opensource.org/licenses/MIT).
+
+## Ver la pagina
+
+Para ver el proyecto en Internet hay que meterse en el enlace [ComicHub](http://188.166.146.80/)
